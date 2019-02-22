@@ -1,0 +1,83 @@
+<!-- <div class="py-5">
+  <div class="row">
+    <div class="col-md-6 mx-auto"> -->
+<div>
+  <!-- <span class="anchor" id="formLogin"></span> -->
+
+  <!-- form card login -->
+  <div class="card rounded-0" id="container">
+    <div class="card-header">
+      <h6 class="mb-0">Shipping Details</h6>
+    </div>
+    <div class="card-body">
+      <form class="form" #thisForm="ngForm">
+
+        <div class="form-group">
+          <label>City</label>
+          <input id="city" [class.is-invalid]="city.invalid && city.touched" type="text" [(ngModel)]="this._main.orderData.city"
+            name="city" class="form-control rounded-0" #city="ngModel" required>
+          <small [class.d-none]="city.valid || city.untouched" class="text-danger">City is required!</small>
+        </div>
+
+        <div class="form-group">
+          <label>Street</label>
+          <input id="street" [class.is-invalid]="street.invalid && street.touched" type="text" [(ngModel)]="this._main.orderData.street"
+            name="street" class="form-control rounded-0" #street="ngModel" required>
+          <small [class.d-none]="street.valid || street.untouched" class="text-danger">Street is required!</small>
+        </div>
+
+
+        <div class="form-group">
+          <label>Shipping date</label>
+          <input id="date"  type="text" [(ngModel)]="deliveryDate.value"
+            name="deliveryDate" class="form-control rounded-0" #deliveryDate="ngModel">
+          <small *ngIf="!this._main.orderData.deliveryDate && deliveryDate.touched" class="text-danger">Shipping date is
+            required!</small>
+           
+        </div>
+
+        <div class="form-group">
+          <label>Credit card</label>
+          <input [class.is-invalid]="creditCard.invalid && creditCard.touched" type="number" [(ngModel)]="this._main.orderData.creditCard"
+            name="creditCard" class="form-control rounded-0" #creditCard="ngModel" required (blur)="ValidateCreditCardNumber(creditCard.value)"
+            placeholder="Only Visa, Master, American Express and Discover are acceptable cards">
+            <small [class.d-none]="creditCard.valid || creditCard.untouched" class="text-danger">Credit card is required!</small>
+          <small class="text-danger" *ngIf="invalidCard && creditCard.value">Invalid credit card number!</small>
+          <div>
+              <img src="https://whbarrs.co.uk/wp/wp-content/uploads/2017/03/visa_lge.png" style="width: 40px; height:30px; margin-top:5px;">
+              <img src="https://www.pymnts.com/wp-content/uploads/2014/03/Discover-logo-e1416429693676.jpg" style="width: 40px; height:30px; margin-top:5px; margin-left:5px;">
+              <img src="http://www.transformmagazine.net/media/6888/amex.jpg" style="width: 40px; height:30px; margin-top:5px; margin-left:5px;">
+              <img src="https://eaglestitches.com/img/2.jpg" style="width: 40px; height:30px; margin-top:5px; margin-left:5px;">
+          </div>
+        </div>
+        <button type="button" (click)="postOrder()" class="btn btn-success float-right" (mouseenter) ="ValidateCreditCardNumber(creditCard.value)" [disabled]="thisForm.form.invalid || invalidCard">Order</button>
+      </form>
+    </div>
+    <!--/card-block-->
+  </div>
+</div>
+<!-- /form card login -->
+
+<!-- </div>
+  
+  
+    </div>
+  </div> -->
+
+
+
+
+<!-- <div *ngIf="this._main.showOrderComponent">
+
+  <h1>Order</h1>
+  <h2>Shipping Details</h2>
+
+  <form>
+    city: <input type="text" [(ngModel)]="this._main.orderData.city" name="city">
+    street: <input type="text" [(ngModel)]="this._main.orderData.street" name="street">
+    shipping date: <input type="date" [(ngModel)]="this._main.orderData.deliveryDate" name="deliveryDate">
+    credit card: <input type="number" [(ngModel)]="this._main.orderData.creditCard" name="creditCard">
+    <input type="button" value="order" (click)="postOrder()">
+  </form>
+
+</div> -->

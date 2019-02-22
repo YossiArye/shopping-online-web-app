@@ -1,0 +1,17 @@
+#mainPageContainer {
+    margin-top:5%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #2196F3;
+
+  }
+
+#mainPageContainer > div {
+  border: white solid 4px;
+    padding: 20px;
+    font-size: 30px;
+    text-align: justify;
+    text-justify: inter-word;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+

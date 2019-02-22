@@ -1,0 +1,20 @@
+div {
+    display: grid;
+    grid-template-rows: auto auto auto;
+  }
+
+div > p {
+    font-size: 20px;
+    margin: auto;
+  }
+div > img{
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  div > h1 {
+    margin: auto;
+  }
+
+

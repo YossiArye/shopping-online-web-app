@@ -1,0 +1,14 @@
+#container{
+    height: 580px;
+
+}
+
+.btn{
+    padding-top: 2px;
+    padding-bottom: 2px;
+   
+}
+
+.card-header{
+    padding-top: 30px;
+}

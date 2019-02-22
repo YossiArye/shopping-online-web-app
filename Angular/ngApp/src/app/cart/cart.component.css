@@ -1,0 +1,53 @@
+#container{
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 580px;
+    overflow-y: scroll;
+}
+#side-bar{
+    text-align: left;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: gray;
+    color: white;
+    padding: 10px 15px;
+    width:50px; 
+    border: none;
+}
+
+img{
+    width: 740px;
+    height: 580px;
+}
+
+/* h4{
+    margin-bottom: 25px;
+    margin-top: 25px;
+} */
+
+  #tail{
+      display: grid;
+      grid-template-columns: auto auto auto;
+      justify-content: space-between;
+      margin-top: 50px;
+
+  }
+
+  #deleteAll ,#order, #back{
+    background-color: gray;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Arial;
+    color: white;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+
+  }
+  #deleteAll:hover ,#order:hover ,#back:hover{
+    background-color: #cfd8dc
+
+  }

@@ -1,0 +1,17 @@
+<div id='container'>
+    <div id="side-bar" (click)="sideBar()" *ngIf="this._main.showCart &&!this._main.productFromSearch && !inOrder">&#9776;</div>
+    <h4 *ngIf="this._main.showCart" style="padding-top: 30px">My Cart:</h4>
+    <hr *ngIf="this._main.showCart">
+    <img *ngIf="!this._main.showCart" src="https://d33972ka1dfc7m.cloudfront.net/system/images/W1siZiIsIjIwMTYvMTIvMTkvMTEvNTYvNTIvNDcyL09ubGluZV9TaG9wcGluZ190cm91YmxlLmpwZyJdXQ/Online-Shopping-trouble.jpg">
+
+    <div id="cartItemsContainer"></div>
+
+    <div id="tail" *ngIf="this._main.showCart">
+        <div *ngIf="this._main.showCart" (click)="deleteCart()" id="deleteAll">Delete All</div>
+        <input style="margin-left:15px" *ngIf="this._main.showOrderComponent" type="text" [(ngModel)]="filter" (input)="highlight()" placeholder="review your cart...">
+        <div *ngIf="this._main.showCart"><b>Total cost: </b>{{this._main.totalCost}}</div>
+        <div *ngIf="this._main.showCart && !this._main.showOrderComponent" (click)="order()" id="order">next</div>
+        <div *ngIf="this._main.showOrderComponent" (click)="backToShop()" id="back">Back To Shop</div>
+    </div>
+
+</div>

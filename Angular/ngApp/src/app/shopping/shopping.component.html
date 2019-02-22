@@ -1,0 +1,25 @@
+<div id="first-container" >
+    <app-search *ngIf="!this._main.showOrderComponent"></app-search>
+    <app-categories *ngIf="!this._main.showOrderComponent"></app-categories>
+</div>
+
+<div id="second-container"   *ngIf="this._main.adminOrCustomer=='customer' && !this._main.dontShowCart">
+    <app-cart id="cart" *ngIf="!this._main.showComponentAdmin"></app-cart>
+    <app-admin  *ngIf="this._main.showComponentAdmin"></app-admin>
+    <app-products id="prod" *ngIf="!this._main.showOrderComponent" ></app-products>
+    <app-order *ngIf="this._main.showOrderComponent"></app-order> 
+</div>
+
+<div id="close-side-bar"   *ngIf="this._main.adminOrCustomer=='customer' && this._main.dontShowCart">
+    <app-products id="prod" *ngIf="!this._main.showOrderComponent" ></app-products>   
+</div>
+
+<div id="second-container"   *ngIf="this._main.adminOrCustomer=='admin'">
+    <app-admin-add  *ngIf="this._main.updateOrAdd=='add'"></app-admin-add>
+    <app-admin  *ngIf="this._main.showComponentAdmin && this._main.updateOrAdd=='update'"></app-admin>
+    <app-products id="prod" *ngIf="!this._main.showOrderComponent" ></app-products>
+    
+</div>
+
+
+

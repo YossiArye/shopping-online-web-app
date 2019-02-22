@@ -1,0 +1,113 @@
+<div id="container">
+    <div  *ngIf="this._main.adminOrCustomer==='admin'" id="headline">
+        <h1>Welcome to the manager page!</h1>
+        In the navigation bar above, you can find a product by category or by typing the name in
+        the search panel.
+        When the product appears, you can select it for updating.
+      </div>
+  <div id="side-bar" (click)="sideBar()" *ngIf="this._main.dontShowCart">&#9776;</div>
+  <h4 *ngIf="this._main.productFromCategory || this._main.productFromSearch">List of products:</h4>
+  <hr *ngIf="this._main.productFromCategory || this._main.productFromSearch">
+
+  <div *ngIf="!this._main.productFromCategory && !this._main.productFromSearch && this._main.adminOrCustomer!=='admin'" id="preview">
+    <div *ngIf="this._main.newCustomer && !this._main.setCartItemsStorage  && !this._main.fromDeleteAll" id="headline">
+      <h1>Welcome to your first shopping!</h1>
+    </div>
+    <div *ngIf="!this._main.openCartFromDB && this._main.madeOrder && !this._main.setCartItemsStorage  && !this._main.fromDeleteAll && !this._main.newCustomer">
+      <div style="font-size: 15px">click <span style="text-decoration:underline; color:blue; cursor: pointer;" (click)="htmltoPDF()">here</span>
+        to download the receipt.</div>
+      <div id='htmlToPDF'>
+        <div id="headline" style="font-size: 20px">
+
+
+          <h3 style="text-decoration:underline"> Your last purchase details</h3>
+          <b>Date:</b> {{dateLastOrder}}<br>
+          <b>Total cost:</b> {{lastOrderTotalCost}} NIS.<br>
+
+
+        </div>
+        <table class="table table-striped" style="font-size: 20px">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Amount</th>
+              <th>Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let rec of this.lastOrderReceipt">
+
+
+              <td>{{rec.productName}}</td>
+              <td>{{rec.amount}}</td>
+              <td>{{rec.cost}}</td>
+
+            </tr>
+          </tbody>
+        </table>
+        <h3>Thank you for buying in Yossi Shop!!</h3>
+      </div>
+
+    </div>
+    <div *ngIf="this._main.setCartItemsStorage && !this._main.fromDeleteAll" class="common">
+
+      You have an open cart from <b>{{openCartDate}}</b>, on total cost of <b>{{totalCost}}</b> NIS.
+
+    </div>
+    <div *ngIf="!this._main.setCartItemsStorage && this._main.openCartFromDB && !this._main.fromDeleteAll" class="common">
+
+      You have an open cart from <b>{{openCartDate}}</b>, on total cost of <b>{{totalCost}}</b> NIS.
+
+    </div>
+    <div *ngIf="!this._main.madeOrder || this._main.setCartItemsStorage || this._main.fromDeleteAll ||this._main.newCustomer || this._main.openCartFromDB"
+      class="common">
+      In the navigation bar above, you can find a product by category or by typing the name in
+      the search panel.
+      When the product appears, you can select it for purchase.
+    </div>
+  </div>
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Product Amount</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+   
+    <div class="modal-body">
+        
+      <input [class.is-invalid]="amount.invalid && amount.touched" #amount="ngModel" type="number" placeholder="amount...." [(ngModel)]="productAmount" min="1" (input)="checkPositive(productAmount)" required>
+      <small *ngIf="dupProduct" class="text-danger" style="display:block">
+        You have already selected this product.<br>
+        Are you sure you want to enter a different amount?
+      </small>
+      <small *ngIf="!amount.valid && !amount.untouched && !amount.value" class="text-danger" style="display:block">Number is required!</small>
+      <small *ngIf="neg && (amount.value || amount.value==0)"  class="text-danger" style="display:block">Number must be positive!</small>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')"  [disabled]="!amount.value || neg">Save</button>
+    </div>
+
+  </ng-template>
+
+  <div *ngIf="this._main.productFromCategory" class="productContainer">
+    <div *ngFor="let product of this._main.products" (click)="open(content,product)" class="products">
+      <figure>
+        <img src="{{product.url}}">
+        <figcaption>{{product.name}}</figcaption>
+      </figure>
+    </div>
+  </div>
+
+
+  <div *ngFor="let product of this._main.products$ | async">
+    <div *ngIf="this._main.productFromSearch" (click)="open(content,product)" class="products">
+      <figure>
+        <img src="{{product.url}}">
+        <figcaption>{{product.name}}</figcaption>
+      </figure>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="navbar-brand">Yossi Shop</div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <!-- <a class="nav-link" routerLink="/shopping" routerLinkActive="active">Shopping</a> -->
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+        <a class="nav-link"  routerLink="/login" *ngIf="!loggedIn()" routerLinkActive="active">Login</a>
+        <a class="nav-link"  routerLink="/register" *ngIf="!loggedIn()" routerLinkActive="active">Register</a>
+        <a class="nav-link" style="cursor:pointer" *ngIf="loggedIn()" (click)="logoutUser()">Logout</a>        
+    </ul>
+  </div>
+</nav>    
+<div>
+  <router-outlet></router-outlet>            
+</div>
